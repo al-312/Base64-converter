@@ -1,86 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text to Base64 Converter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-        }
-        textarea {
-            width: 100%;
-            height: 150px;
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            resize: vertical;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #base64Output {
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            font-family: monospace;
-            background-color: #f1f1f1;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            height: 100px;
-            resize: vertical;
-            overflow-y: scroll;
-        }
-    </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Text ↔ Base64 Converter</title>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="index.js"></script>
 </head>
 <body>
-
 <div class="container">
-    <h1>Text to Base64 Converter</h1>
-    <textarea id="inputText" placeholder="Enter text here..."></textarea>
-    <button onclick="convertToBase64()">Convert to Base64</button>
-    <button onclick="convertToText()">Convert to text</button>
-    <textarea id="base64Output" readonly placeholder="Base64 result will appear here..."></textarea>
+    <h1>Text ↔ Base64 Converter</h1>
+
+    <div class="input-group">
+        <label for="inputText">Input (Text or Base64)</label>
+        <textarea id="inputText" placeholder="Enter plain text or Base64 encoded string..."></textarea>
+    </div>
+
+    <div class="button-group">
+        <button class="encode-btn" onclick="convertToBase64()">
+            <img src="assets/lock.svg" alt="lock"/>
+            Convert to Base64
+        </button>
+        <button class="decode-btn" onclick="convertToText()">
+            <img src="assets/key.svg" alt="key"/>
+            Convert to Text
+        </button>
+    </div>
+
+    <div class="output-group">
+        <label for="base64Output">Output</label>
+        <textarea id="base64Output" readonly placeholder="Converted result will appear here..."></textarea>
+        <button class="copy-btn" onclick="copyToClipboard()" title="Copy to Clipboard">
+            <img src="assets/copy.svg" alt="key"/>
+        </button>
+    </div>
+
+    <div id="statusMessage" class="status-message"></div>
 </div>
-
-<script>
-    function convertToBase64() {
-        const inputText = document.getElementById("inputText").value;
-        document.getElementById("base64Output").value = btoa(inputText);
-    }
-
-    const convertToText = () =>{
-        const base64Text = document.getElementById("inputText").value;
-        document.getElementById("base64Output").value = atob(base64Text);
-    }
-</script>
-
 </body>
 </html>
