@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Base64 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #base64Output {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            font-family: monospace;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            height: 100px;
+            resize: vertical;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Text to Base64 Converter</h1>
+    <textarea id="inputText" placeholder="Enter text here..."></textarea>
+    <button onclick="convertToBase64()">Convert to Base64</button>
+    <button onclick="convertToText()">Convert to text</button>
+    <textarea id="base64Output" readonly placeholder="Base64 result will appear here..."></textarea>
+</div>
+
+<script>
+    function convertToBase64() {
+        const inputText = document.getElementById("inputText").value;
+        document.getElementById("base64Output").value = btoa(inputText);
+    }
+
+    const convertToText = () =>{
+        const base64Text = document.getElementById("inputText").value;
+        document.getElementById("base64Output").value = atob(base64Text);
+    }
+</script>
+
+</body>
+</html>
